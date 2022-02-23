@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "PancettaSerifItalic";
+  src: url("fonts/MintType-PancettaSerifProItalic.otf");
+}
+@font-face {
+  font-family: "PancettaSerifRegular";
+  src: url("fonts/MintType-PancettaSerifProRegular.otf");
+}
+p,
+a,
+span,
+button {
+  font-family: "PancettaSerifRegular";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "PancettaSerifItalic";
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+.btn-center {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+main {
+  margin: auto;
+  margin-top: 4em;
+  min-height: calc(100vh - 45px - 176px - 15px);
+}
+@media (min-width: 1441px) {
+  main {
+    min-height: calc(100vh - 45px - 176px);
+  }
+}
+@media (max-width: 1440px) and (min-width: 1200px) {
+  main {
+    min-height: calc(100vh - 48px - 176px);
+  }
+}
+@media (max-width: 1199px) and (min-width: 769px) {
+  main {
+    min-height: calc(100vh - 39px - 176px);
+  }
+}
+@media (max-width: 768px) and (min-width: 576px) {
+  main {
+    min-height: calc(100vh - 45px - 16px - 136px - 15px);
+  }
+}
+@media (max-width: 575px) and (min-width: 424px) {
+  main {
+    min-height: calc(100vh - 45px - 136px);
+  }
+}
+@media (max-width: 424px) and (min-width: 322px) {
+  main {
+  }
+}
+@media (max-width: 321px) {
+  main {
+  }
+}

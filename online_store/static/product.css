@@ -1,0 +1,271 @@
+.content_section {
+    display: flex;
+    margin-top: 5%;
+}
+.carousel-div #carouselExampleIndicators {
+    margin: auto;
+    width: 60%;
+    border-radius: 20px;
+}
+.product-img {
+    border-radius: 20px;
+}
+.product_characteristic-div{
+    text-align: center;
+}
+.price_product {
+    color: rgb(200,0,0);
+}
+.content_card_ch #accordionPanelsStayOpenExample {
+    margin: auto;
+}
+.carousel-item {
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-fade .active.carousel-item-start,
+.carousel-fade .active.carousel-item-end {
+  transition: opacity 0s 0.5s;
+}
+
+@media (min-width: 1441px) {
+    .content_section {
+        margin-top: 5%;
+    }
+    .carousel-div {
+        margin-left: 2em;
+        width: 38%;
+    }
+    .carousel-div #carouselExampleIndicators {
+        width: 60%;
+    }
+    .product_characteristic-div{
+        width: 58%;
+        right: 1%
+    }
+    .title_product {
+        margin-top: 4em;
+    }
+    .price_product {font-size: 16pt}
+    .cart_product-btn {font-size: 14pt}
+    .content_card_ch #accordionPanelsStayOpenExample {
+        width: 45em !important;
+        margin-top: 2em;
+    }
+    .title_card-characteristic {font-size: 15pt}
+    .characteristic-li {
+        font-size: 13pt;
+        padding: 3px
+    }
+    .footer {margin-top: 2em !important}
+}
+@media (max-width: 1440px) and (min-width: 1200px) {
+    .content_section {
+        margin-top: 5%;
+    }
+    .carousel-div {
+        margin-left: 2em;
+        width: 38%;
+    }
+    .carousel-div #carouselExampleIndicators {
+        width: 60%;
+    }
+    .product_characteristic-div{
+        width: 58%;
+        right: 1%
+    }
+    .title_product {
+        margin-top: 4em;
+    }
+    .price_product {font-size: 16pt}
+    .cart_product-btn {font-size: 14pt}
+    .content_card_ch #accordionPanelsStayOpenExample {
+        width: 45em !important;
+        margin-top: 2em;
+    }
+    .title_card-characteristic {font-size: 15pt}
+    .characteristic-li {
+        font-size: 13pt;
+        padding: 3px
+    }
+    .footer {margin-top: 2em !important}
+}
+@media (max-width: 1199px) and (min-width: 769px) {
+    .content_section {
+        margin-top: 8%;
+    }
+    .carousel-div {
+        margin-left: 2em;
+        width: 33%;
+    }
+    .carousel-div #carouselExampleIndicators {
+        width: 60%;
+    }
+    .product_characteristic-div{
+        width: 70%;
+        right: 1%
+    }
+    .title_product {
+        margin-top: 1em;
+        font-size: 18pt;
+    }
+    .price_product {font-size: 14pt}
+    .cart_product-btn {font-size: 12pt}
+    .content_card_ch #accordionPanelsStayOpenExample {
+        width: 38em !important;
+        margin-top: 2em;
+    }
+    .title_card-characteristic {font-size: 13pt}
+    .characteristic-li {
+        font-size: 12pt;
+        padding: 3px
+    }
+    .footer {margin-top: 2em !important}
+}
+@media (max-width: 768px) and (min-width: 576px) {
+    .content_section {
+        margin-top: 8%;
+        display: block;
+    }
+    .carousel-div {
+        margin: auto;
+        width: 100%;
+    }
+    .carousel-div #carouselExampleFade {
+        margin: auto;
+        width: 50%;
+    }
+    .product_characteristic-div{
+        width: 70%;
+        margin: auto;
+        right: 1%
+    }
+    .title_product {
+        margin-top: 1em;
+        font-size: 18pt;
+    }
+    .price_product {font-size: 14pt}
+    .cart_product-btn {font-size: 12pt}
+    .content_card_ch #accordionPanelsStayOpenExample {
+        width: 38em !important;
+        margin-top: 2em;
+    }
+    .title_card-characteristic {font-size: 13pt}
+    .description_font {font-size: 11pt}
+    .characteristic-li {
+        font-size: 12pt;
+        padding: 3px
+    }
+    .footer {margin-top: 2em !important}
+}
+@media (max-width: 575px) and (min-width: 424px) {
+    .content_section {
+        margin-top: 10%;
+        display: block;
+    }
+    .carousel-div {
+        margin: auto;
+        width: 100%;
+    }
+    .carousel-div #carouselExampleFade {
+        margin: auto;
+        width: 60%;
+    }
+    .product_characteristic-div{
+        width: 70%;
+        margin: auto;
+        right: 1%
+    }
+    .title_product {
+        margin-top: 1em;
+        font-size: 17pt;
+    }
+    .price_product {font-size: 13pt}
+    .cart_product-btn {font-size: 11pt}
+    .content_card_ch #accordionPanelsStayOpenExample {
+        width: 20em !important;
+        margin-top: 2em;
+    }
+    .title_card-characteristic {font-size: 12pt; padding: 5px}
+    .description_font {font-size: 10pt}
+    .characteristic-li {
+        font-size: 12pt;
+        padding: 3px
+    }
+    .footer {margin-top: 2em !important}
+    .number-minus {height: 28px}
+    .number-plus {height: 28px}
+}
+@media (max-width: 424px) and (min-width: 322px) {
+    .content_section {
+        margin-top: 10%;
+        display: block;
+    }
+    .carousel-div {
+        margin: auto;
+        width: 100%;
+    }
+    .carousel-div #carouselExampleFade {
+        margin: auto;
+        width: 70%;
+    }
+    .product_characteristic-div{
+        width: 70%;
+        margin: auto;
+    }
+    .title_product {
+        margin-top: 2em;
+        font-size: 17pt;
+    }
+    .price_product {font-size: 13pt; margin-bottom: 0.5em}
+    .cart_product-btn {font-size: 11pt; margin-bottom: 1em}
+    .content_card_ch #accordionPanelsStayOpenExample {
+        width: 16.5em !important;
+        margin: auto !important;
+    }
+    .number {bottom: 6px}
+    .title_card-characteristic {font-size: 12pt; padding: 5px}
+    .description_font {font-size: 10pt}
+    .characteristic-li {
+        font-size: 11pt;
+        padding: 3px
+    }
+    .footer {margin-top: 2em !important}
+    .number-minus {height: 28px}
+    .number-plus {height: 28px}
+}
+@media (max-width: 321px) {
+    .content_section {
+        margin-top: 10%;
+        display: block;
+    }
+    .carousel-div {
+        margin: auto;
+        width: 100%;
+    }
+    .carousel-div #carouselExampleFade {
+        margin: auto;
+        width: 70%;
+    }
+    .product_characteristic-div{
+        width: 70%;
+        margin: auto;
+    }
+    .title_product {
+        margin-top: 2em;
+        font-size: 16pt;
+    }
+    .price_product {font-size: 12pt}
+    .cart_product-btn {font-size: 9pt}
+    .content_card_ch #accordionPanelsStayOpenExample {
+        width: 14em !important;
+        margin-top: 1.5em;
+    }
+    .title_card-characteristic {font-size: 11pt; padding: 5px}
+    .description_font {font-size: 9pt}
+    .characteristic-li {
+        font-size: 11pt;
+        padding: 3px
+    }
+    .footer {margin-top: 2em !important}
+}

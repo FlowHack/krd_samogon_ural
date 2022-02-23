@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock title %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'customPage.css' %}">
+{% endblock style %}
+
+{% block content %}
+<main>
+  <section class="custom-section">
+    <h1 class="title-h1">{{ title_h }}</h1>
+    <p class="custom-p">{{ message|safe }}</p>
+    <a href="{% url 'online_store:index' %}" class="btn_index btn btn-outline-dark">На главную</a>
+  </section>
+</main>
+{% endblock content %}

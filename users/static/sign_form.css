@@ -1,0 +1,185 @@
+.form-section {
+    border: solid 1px rgba(0, 0, 0, 0.4);
+    border-radius: 25px;
+}
+.title-div {
+    text-align: center;
+    background: #212529;
+    border-radius: 25px 25px 0 0;
+}
+.title-h {
+    color: rgba(255, 255, 255, 0.7);
+}
+.errors-form {
+    color: rgba(255, 0, 0, 0.7);
+}
+.fields-div {
+    padding-top: 0;
+}
+.reset_password {
+    text-decoration: none;
+    font-size: 12pt;
+    margin-right: 5px;
+}
+
+@media (min-width: 1441px) {
+    .form-section {
+        width: 35%;
+        margin: 9em auto;
+        margin-bottom: 6em;
+    }
+    .title-div {
+        width: 100%;
+        padding: 2px;
+        padding-top: 4px;
+        margin-bottom: 1em;
+    }
+    .title-h {
+        font-size: 22pt;
+    }
+    .errors-form {
+        font-size: 11pt;
+    }
+    .fields-div {
+        padding: 30px;
+    }
+}
+@media (max-width: 1440px) and (min-width: 1200px) {
+    .form-section {
+        width: 35%;
+        margin: 6em auto;
+    }
+    .title-div {
+        width: 100%;
+        padding: 2px;
+        padding-top: 4px;
+        margin-bottom: 1em;
+    }
+    .title-h {
+        font-size: 22pt;
+    }
+    .errors-form {
+        font-size: 11pt;
+    }
+    .fields-div {
+        padding: 30px;
+    }
+}
+@media (max-width: 1199px) and (min-width: 769px) {
+    .form-section {
+        width: 50%;
+        margin: 5em auto;
+        margin-bottom: 2em
+    }
+    .title-div {
+        width: 100%;
+        padding: 2px;
+        padding-top: 4px;
+        margin-bottom: 1em;
+    }
+    .title-h {
+        font-size: 22pt;
+    }
+    .errors-form {
+        font-size: 11pt;
+    }
+    .fields-div {
+        padding: 30px;
+    }
+}
+@media (max-width: 768px) and (min-width: 576px) {
+    .form-section {
+        width: 65%;
+        margin: 5em auto;
+        margin-bottom: 2em
+    }
+    .title-div {
+        width: 100%;
+        padding: 2px;
+        padding-top: 4px;
+    }
+    .title-h {
+        font-size: 20pt;
+    }
+    .errors-form {
+        font-size: 11pt;
+    }
+    .fields-div {
+        padding: 30px;
+    }
+    .label_input {font-size: 12pt}
+    .input_font {font-size: 11pt}
+    .help_text {fonr-size: 11pt}
+}
+@media (max-width: 575px) and (min-width: 424px) {
+    .form-section {
+        width: 80%;
+        margin: 6em auto;
+        margin-bottom: 2.8em
+    }
+    .title-div {
+        width: 100%;
+        padding: 2px;
+        padding-top: 4px;
+    }
+    .title-h {
+        font-size: 18pt;
+    }
+    .errors-form {
+        font-size: 11pt;
+    }
+    .fields-div {
+        padding: 30px;
+    }
+    .label_input {font-size: 11pt}
+    .input_font {font-size: 10pt}
+    .help_text {fonr-size: 10pt}
+}
+@media (max-width: 424px) and (min-width: 322px) {
+    .form-section {
+        width: 90%;
+        margin: 6em auto;
+        margin-bottom: 3em
+    }
+    .title-div {
+        width: 100%;
+        padding: 2px;
+        padding-top: 4px;
+    }
+    .title-h {
+        font-size: 18pt;
+    }
+    .errors-form {
+        font-size: 11pt;
+    }
+    .fields-div {
+        padding: 30px;
+    }
+    .label_input {font-size: 11pt}
+    .input_font {font-size: 10pt}
+    .help_text {fonr-size: 10pt}
+}
+@media (max-width: 321px) {
+    .form-section {
+        width: 95%;
+        margin: 6.5em auto;
+        margin-bottom: 3.8em
+    }
+    .title-div {
+        width: 100%;
+        padding: 2px;
+        padding-top: 4px;
+    }
+    .title-h {
+        font-size: 18pt;
+    }
+    .errors-form {
+        font-size: 11pt;
+    }
+    .fields-div {
+        padding: 30px;
+    }
+    .label_input {font-size: 11pt}
+    .input_font {font-size: 10pt}
+    .help_text {fonr-size: 10pt}
+}

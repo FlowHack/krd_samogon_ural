@@ -1,0 +1,23 @@
+{% load static %}
+{% load user_tags %}
+{% get_year as year %}
+
+<section class="footer">
+  <footer>
+    <div class="footer-img">
+      <img src="{% static 'images/logo.png' %}">
+    </div>
+    <div class="content-footer">
+      <a href="#" style="text-decoration: none">
+        <span style="color: yellow">Заказать звонок:&nbsp;</span>+7(861) 290-02-50
+      </a><br>
+      <a href="https://wapp.click/79282053255" style="text-decoration: none">
+        <span style="color: yellow">What`s app:</span>&nbsp;+7(928) 205-32-55
+      </a>
+      <hr class="hr-footer" style="color: white;">
+      <p class="text-center text-muted">
+        &copy; 2021-{{ year }} Created by <a href="https://github.com/FlowHack" style="text-decoration: none">FlowHack</a>
+      </p>
+    </div>
+  </footer>
+</section>

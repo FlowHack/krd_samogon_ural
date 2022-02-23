@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load user_filters %}
+
+{% block title %}Авторизация{% endblock title %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'sign_form.css' %}">
+{% endblock style %}
+
+{% block content %}
+<main>
+  <form class="form-section" action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    <div class="title-div">
+      <h2 class="title-h">Вход</h2>
+    </div>
+    <div class="fields-div">
+      {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+      <p class="errors-form">Ошибка: {{ error }}</p>
+      {% endfor %}
+      {% endif %}
+      {% for field in form %}
+      <div class="mb-3">
+        <label for="{{ field.id }}" class="label_input form-label">{{ field.label }}</label>
+        {{ field|addclass:"input_font form-control" }}
+        {% if field.errors %}
+        {% for error in field.errors %}<p class="errors-form">Ошибка: {{ error }}</p>{% endfor %}
+        {% else %}
+        <div class="help_text form-text">{{ field.help_text }}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+      <div class="btn-center" style="display: inline-block">
+        <button type="submit" class="btn btn-outline-dark">Войти</button>
+        <a class="btn btn-outline-success" style="margin-left: 5px;" href="{% url 'password_reset' %}">Забыли пароль?</a>
+      </div>
+    </div>
+  </form>
+</main>
+{% endblock content %}

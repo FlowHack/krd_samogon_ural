@@ -1,0 +1,124 @@
+.search {
+    border-radius: 20px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+.hint {
+    background: rgba(0,0,0,0.7);
+    border: 1px solid rgb(0,0,0);
+    border-radius: 15px;
+    padding: 5px;
+    display: none;
+
+    position: fixed;
+    margin: auto;
+    z-index: 100;
+}
+.url_product {
+    v-align: center;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: rgba(255, 255, 255, .9);
+    border-radius: 10px;
+}
+.url_product:hover {
+    color: rgb(50, 50, 50);
+    background: rgb(190, 190, 190)
+}
+
+@media (min-width: 1441px) {
+    .search {
+        width: 25em;
+        margin-right: 4px;
+    }
+    .hint {
+        width: 25em;
+        top: 3.823em;
+        right: 1em;
+    }
+    .url_product {
+        padding: 3px;
+        padding-left: 7px;
+        margin: 2px;
+    }
+}
+@media (max-width: 1440px) and (min-width: 1200px) {
+    .search {
+        width: 25em;
+        margin-right: 4px;
+    }
+    .hint {
+        width: 25em;
+        top: 3.823em;
+        right: 1em;
+    }
+    .url_product {
+        padding: 3px;
+        padding-left: 7px;
+        margin: 2px;
+    }
+}
+@media (max-width: 1199px) and (min-width: 769px) {
+    .search {
+        width: 20em;
+        margin-right: 1em !important;
+    }
+    .hint {
+        width: 20em;
+        top: 3.823em;
+        right: 1.5em;
+    }
+    .url_product {
+        padding: 3px;
+        padding-left: 7px;
+        margin: 2px;
+    }
+}
+@media (max-width: 768px) and (min-width: 576px) {
+    .hint {
+        width: 46em;
+        top: 16.8em;
+        right: 1.4em;
+    }
+    .url_product {
+        padding: 3px;
+        padding-left: 7px;
+        margin: 2px;
+    }
+}
+@media (max-width: 575px) and (min-width: 377px) {
+    .hint {
+        width: 24.5em;
+        top: 16.8em;
+        right: 1.3em;
+    }
+    .url_product {
+        padding: 3px;
+        padding-left: 7px;
+        margin: 2px;
+    }
+}
+@media (max-width: 376px) and (min-width: 322px) {
+    .hint {
+        width: 20.5em;
+        top: 16.8em;
+        right: 1.3em;
+    }
+    .url_product {
+        padding: 3px;
+        padding-left: 7px;
+        margin: 2px;
+    }
+}
+@media (max-width: 321px) {
+    .hint {
+        width: 18em;
+        top: 16.8em;
+        right: 1.3em;
+    }
+    .url_product {
+        padding: 3px;
+        padding-left: 7px;
+        margin: 2px;
+    }
+}

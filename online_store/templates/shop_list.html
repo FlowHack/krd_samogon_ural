@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Корзина{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'shop_list.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'spinbox.css' %}" media="screen">
+{% endblock style %}
+{% block js %}
+<script defer class="u-script" type="text/javascript" src="{% static 'js/shop_list.js' %}" defer=""></script>
+{% endblock js %}
+
+{% block content %}
+{% csrf_token %}
+<main>
+  <section id="section-shoplist" count="{{ count }}">
+      <h2 class="title_shop_list">Корзина</h2>
+      <div class="left-section">
+        {% for record in shopping_list %}
+        <div style="opacity: 1" class="card-div card mb-3" id="shopping-list-{{ record.id }}">
+          <div class="row g-0">
+            <div class="col-md-4">
+              {% if record.product.preview_image %}
+              <img src="{{ MEDIA_URL }}{{ record.product.preview_image.url }}" class="card-img img-fluid rounded-start">
+              {% else %}
+              <img src="{% static 'images/product.jpeg' %}" class="card-img img-fluid rounded-start">
+              {% endif %}
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ record.product.title }}</h5>
+                <span class="count_purchases-span card-text">Количество товара: </span>
+                <div class="number" id="input_count_purchases_div">
+                  <button class="number-minus" type="button" onclick="change_count_product({{ record.id }}, '-')">-</button>
+                  <input type="number" min="1" value="{{ record.quantity }}" readonly id="input_count_purchases-{{ record.id }}">
+                  <button class="number-plus" type="button" onclick="change_count_product({{ record.id }}, '+')">+</button>
+                </div>
+                <p class="price-small card-text"><small class="text-muted" id="price-order-item-{{ record.id }}">Цена: {{ record.product.price }}руб.</small></p>
+                <a type="button" style="width: 100%" onclick="shopping_list({{ record.id }})" class="btn btn-outline-danger">Убрать из корзины</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% if shopping_list.count > 0 %}
+      <div class="right-section">
+        <h2 id="total-price" class="itogo-h2">Итого: {{ sum_price }}руб.</h2>
+        <a type="button" class="btn-center btn btn-outline-success">Заказать</a>
+      </div>
+      {% endif %}
+  </section>
+</main>
+{% endblock content %}

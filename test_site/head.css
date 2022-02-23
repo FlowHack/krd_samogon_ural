@@ -1,0 +1,22 @@
+.search {
+    border-radius: 20px;
+}
+
+@media (min-width: 1441px) {
+    .search {
+        width: 25em;
+        margin-right: 4px;
+    }
+}
+@media (max-width: 1440px) and (min-width: 1200px) {
+    .search {
+        width: 25em;
+        margin-right: 4px;
+    }
+}
+@media (max-width: 1199px) and (min-width: 769px) {
+    .search {
+        width: 20em;
+        margin-right: 4px;
+    }
+}

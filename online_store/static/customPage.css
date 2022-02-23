@@ -1,0 +1,72 @@
+.custom-section {
+    width: 40%;
+    margin: 15% auto;
+    text-align: center;
+}
+.title-h1 {
+
+}
+.custom-p {
+
+}
+.btn_index {
+
+}
+
+@media (min-width: 1441px) {
+    .custom-section {
+        width: 80%;
+        margin: 15% auto;
+    }
+}
+@media (max-width: 1440px) and (min-width: 1200px) {
+    .custom-section {
+        width: 80%;
+        margin: 10% auto;
+    }
+}
+@media (max-width: 1199px) and (min-width: 769px) {
+    .custom-section {
+        width: 80%;
+        margin: 15% auto;
+    }
+    .title-h1 {font-size: 20pt}
+    .custom-p {font-size: 13pt}
+    .btn_index {font-size: 12pt}
+}
+@media (max-width: 768px) and (min-width: 576px) {
+    .custom-section {
+        width: 80%;
+        margin: 22% auto;
+    }
+    .title-h1 {font-size: 19pt}
+    .custom-p {font-size: 12pt}
+    .btn_index {font-size: 11pt}
+}
+@media (max-width: 575px) and (min-width: 424px) {
+    .custom-section {
+        width: 80%;
+        margin: 43.6% auto;
+    }
+    .title-h1 {font-size: 16pt}
+    .custom-p {font-size: 10pt}
+    .btn_index {font-size: 8pt}
+}
+@media (max-width: 424px) and (min-width: 322px) {
+    .custom-section {
+        width: 80%;
+        margin: 49.6% auto;
+    }
+    .title-h1 {font-size: 16pt}
+    .custom-p {font-size: 10pt}
+    .btn_index {font-size: 8pt}
+}
+@media (max-width: 321px) {
+    .custom-section {
+        width: 80%;
+        margin: 63% auto;
+    }
+    .title-h1 {font-size: 15pt}
+    .custom-p {font-size: 9pt}
+    .btn_index {font-size: 7pt}
+}

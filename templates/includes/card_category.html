@@ -1,0 +1,48 @@
+{% load static %}
+
+<div class="col">
+  <div class="card-content card h-100 border-secondary">
+    {% if category.image.url %}
+    <a href="{% if view_category %}{% url 'online_store:category' id_category=category.id %}{% else %}{% url 'online_store:subcategory' id_subcategory=category.id %}{% endif %}">
+      <img src="{{ MEDIA_URL }}{{ category.image.url }}" class="card-img card-img-top">
+    </a>
+    {% else %}
+    <a href="{% if view_category %}{% url 'online_store:category' id_category=category.id %}{% else %}{% url 'online_store:subcategory' id_subcategory=category.id %}{% endif %}">
+      <img src="{% static 'images/product.jpeg' %}" class="card-img card-img-top">
+    </a>
+    {% endif %}
+    <div class="card-body" style="padding: 0;">
+      <h5 class="title_card card-title" align="center">{{ category.title }}</h5>
+    </div>
+    <div class="list-group">
+      {% if view_category %}
+      {% for subcategory in category.in_subcategories.all|slice:":4" %}
+      <a href="{% url 'online_store:subcategory' id_subcategory=subcategory.id %}" class="li_card list-group-item list-group-item-action">
+        {% if subcategory.title|length > 17 %}
+        {{ subcategory.title|slice:":17" }}...
+        {% else %}
+        {{ subcategory.title }}
+        {% endif %}
+      </a>
+      {% empty %}
+      <a class="li_card list-group-item list-group-item-action disabled">Нет подкатегорий</a>
+      {% endfor %}
+      {% else %}
+      {% for product in category.in_products.all|slice:":4" %}
+      <a href="{% url 'online_store:product' id_product=product.id %}" class="li_card list-group-item list-group-item-action">
+        {% if product.title|length > 17 %}
+        {{ product.title|slice:":17" }}...
+        {% else %}
+        {{ product.title }}
+        {% endif %}
+      </a>
+      {% empty %}
+      <a class="li_card list-group-item list-group-item-action disabled">Нет товаров</a>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div class="card-body">
+      <a href="{% if view_category %}{% url 'online_store:category' id_category=category.id %}{% else %}{% url 'online_store:subcategory' id_subcategory=category.id %}{% endif %}" type="button" class="btn_card btn-center btn btn-outline-dark">Перейти</a>
+    </div>
+  </div>
+</div>

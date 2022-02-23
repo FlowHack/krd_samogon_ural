@@ -1,0 +1,4 @@
+Здравствуйте, {{ user.username }}! Для окончания регистрации на сайте {{ site_name }}, перейдите по ссылке.
+http://{{ domain }}{% url 'verify_email' uid64=uid token=token %}
+
+Ваш логин: {{ user.username }}, на случай, если вы его забыли.С уважением, команда сайта {{ site_name }}

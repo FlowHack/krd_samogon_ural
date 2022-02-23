@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cache %}
+
+{% block title %}Главная{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'index.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'card-category.css' %}" media="screen">
+{% endblock style %}
+
+{% block content %}
+{% cache 200 index %}
+<section class="content content-section">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      {% for image in images %}
+      {% if image.first is True %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="active" aria-current="true"></button>
+      {% elif is_first is False and forloop.first %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="active" aria-current="true"></button>
+      {% else %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}"></button>
+      {% endif %}
+      {% empty %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" class="active" data-bs-slide-to="0"></button>
+      {% endfor %}
+    </div>
+    <div class="carousel-inner">
+      {% for image in images %}
+      {% if image.first is True %}
+      <div class="carousel-item active"><img src="{{ MEDIA_URL }}{{ image.image.url }}" class="carousel_image d-block w-100"></div>
+      {% elif is_first is False and forloop.first %}
+      <div class="carousel-item active"><img src="{{ MEDIA_URL }}{{ image.image.url }}" class="carousel_image d-block w-100"></div>
+      {% else %}
+      <div class="carousel-item"><img src="{{ MEDIA_URL }}{{ image.image.url }}" class="carousel_image d-block w-100"></div>
+      {% endif %}
+      {% empty %}
+      <div class="carousel-item active"><img src="{% static 'images/banner.jpeg' %}" class="carousel_image d-block w-100"></div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Предыдущий</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Следующий</span>
+    </button>
+  </div>
+</section>
+{% if categories %}
+<section class="content-product">
+  <div id="wrapper_cards" class="content-row row g-4 row-cols-lg-4 row-cols-3">
+    {% for category in categories %}
+    {% include 'includes/card_category.html' with category=category view_category=True forloop=forloop %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endcache index %}
+{% endblock content %}

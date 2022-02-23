@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cache %}
+
+{% block title %}Пивоварение{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'category.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'card-category.css' %}" media="screen">
+{% endblock style %}
+
+{% block content %}
+{% cache 60 category %}
+<main>
+  <section class="content content-section">
+    <div class="title_img-div">
+      <h2 class="title-h">{{ category.title }}</h2>
+      <img src="{{ MEDIA_URL }}{{ category.title_image.url }}">
+    </div>
+  </section>
+  {% if subcategories %}
+  <section class="content-product">
+    <div id="wrapper_cards" class="content-row row g-4 row-cols-lg-4 row-cols-3">
+      {% for subcategory in subcategories %}
+      {% include 'includes/card_category.html' with category=subcategory %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</main>
+{% endcache %}
+{% endblock content %}

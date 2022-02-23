@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load user_tags %}
+{% load cache %}
+
+{% block title %}{{ product.title }}{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'product.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'spinbox.css' %}" media="screen">
+{% endblock style %}
+{% block js %}
+<script defer class="u-script" type="text/javascript" src="{% static 'js/purchases.js' %}" defer=""></script>
+{% endblock js %}
+
+{% block content %}
+{% csrf_token %}
+<main>
+  <section class="content_section">
+    {% cache 20 carousel_product product.id %}
+    <div class="carousel-div">
+      <div id="carouselExampleFade" class="carousel_img-div carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          {% for image in images %}
+          {% if image.first is True %}
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="active" aria-current="true"></button>
+          {% elif is_first is False and forloop.first %}
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="active" aria-current="true"></button>
+          {% else %}
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}"></button>
+          {% endif %}
+          {% empty %}
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+          {% endfor %}
+        </div>
+        <div class="carousel-inner">
+          {% for image in images %}
+          {% if image.first is True %}
+          <div class="carousel-item active">
+            <img src="{{ MEDIA_URL }}{{ image.image.url }}" class="product-img d-block w-100">
+          </div>
+          {% elif is_first is False and forloop.first %}
+          <div class="carousel-item active">
+            <img src="{{ MEDIA_URL }}{{ image.image.url }}" class="product-img d-block w-100">
+          </div>
+          {% else %}
+          <div class="carousel-item">
+            <img src="{{ MEDIA_URL }}{{ image.image.url }}" class="product-img d-block w-100" alt="...">
+          </div>
+          {% endif %}
+          {% empty %}
+          <div class="carousel-item active">
+            <img src="{% static 'images/2.svg' %}" class="product-img d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/1.svg' %}" class="product-img d-block w-100">
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"  data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Предыдущий</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"  data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Следующий</span>
+        </button>
+      </div>
+    </div>
+    {% endcache %}
+    <div class="product_characteristic-div">
+      {% cache 20 main_info_product product.id %}
+      <h2 class="title_product">{{ product.title|safe }}</h2>
+      <p class="price_product">₽ {{ product.price }}₽</p>
+      {% endcache %}
+      {% if product|in_shoplist:request.user %}
+      <a type="button" onclick="purchases({{ product.id }})" class="cart_product-btn btn btn-outline-danger" id="btn_purchases" data-out>Удалить из корзины</a>
+      <div style="display: none" class="number" id="input_count_purchases_div">
+        <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
+        <input type="number" min="1" value="1" readonly id="input_count_purchases">
+        <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+      </div>
+      {% else %}
+      <a type="button" onclick="purchases({{ product.id }})" class="cart_product-btn btn btn-outline-dark" id="btn_purchases">Добавить в корзину</a>
+      <div class="number" id="input_count_purchases_div">
+        <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
+        <input type="number" min="1" value="1" readonly id="input_count_purchases">
+        <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+      </div>
+      {% endif %}
+      {% cache 20 characteristic_product product.id %}
+      <div class="content_card_ch">
+        <div class="card-ch-product accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+              <button class="title_card-characteristic accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                Описание
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="description_font accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+              <div class="accordion-body">
+                {{ product.description|safe }}
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+              <button class="title_card-characteristic accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                Характеристики
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+              <div class="accordion-body">
+                <ul class="list-group list-group-flush">
+                  {% for characteristic in product.characteristics.all %}
+                  <li class="characteristic-li list-group-item">{{ characteristic.characteristic.title }} - {{ characteristic.quantity }}{% if characteristic.characteristic.dimension %}{{ characteristic.characteristic.dimension }}{% endif %}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% if equipments %}
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+              <button class="title_card-characteristic accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                Комплектация
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+              <div class="accordion-body">
+                <ul class="list-group list-group-flush">
+                  {% for equipment in equipments %}
+                  <li class="characteristic-li list-group-item">{{ equipment }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endcache %}
+    </div>
+  </section>
+</main>
+{% endblock content %}

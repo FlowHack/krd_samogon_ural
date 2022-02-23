@@ -1,0 +1,19 @@
+.section_profile {
+    padding: 5px;
+    width: 15%;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+    text-align: center;
+}
+.name-div {
+    text-align: center;
+}
+.name-h4{margin-bottom: 1px}
+.btn_change_password-div {
+    text-align: center;
+}
+.btn_change_password {
+    position: relative;
+    top: 50%;
+}

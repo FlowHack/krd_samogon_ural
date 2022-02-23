@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Неверная ссылка{% endblock title %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'customPage.css' %}">
+{% endblock style %}
+
+{% block content %}
+<main>
+  <section class="custom-section">
+    <h1 class="title-h1">Неверная ссылка!</h1>
+    <p class="custom-p">Неверная ссылка для регистрации, попробуйте снова.</p>
+    <a href="{% url 'signup' %}" class="btn_index btn btn-outline-dark">Регистрация</a>
+  </section>
+</main>
+{% endblock content %}
