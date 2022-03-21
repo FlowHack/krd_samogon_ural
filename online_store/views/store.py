@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from online_store.models import PreviewImage, Category, Product, Order
+from online_store.models import PreviewImage, Category, Product, Order, SubCategory
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.db.models import Max, Min
 
 
 User = get_user_model()
@@ -44,12 +45,38 @@ def product(request, id_product):
 
 
 @login_required
-def profile(request):
-    return render(request, 'profile.html')
+def orders(request):
+    orders_user = Order.objects.filter(user=request.user).exclude(state=Order.StatusOrder.SHOPPINGLIST)
+    in_processing = orders_user.filter(state=Order.StatusOrder.INPROCESSING)
+    in_delivery = orders_user.filter(state=Order.StatusOrder.INDELIVERY)
+    complete = orders_user.filter(state=Order.StatusOrder.ORDERCOMPLETE)
+
+    context = {
+        'in_processing': in_processing,
+        'in_delivery': in_delivery,
+        'complete': complete,
+    }
+    return render(request, 'orders.html', context=context)
 
 
 def subcategory(request, id_subcategory):
-    pass
+    _subcategory = get_object_or_404(SubCategory, id=id_subcategory)
+    products = _subcategory.in_products.all().order_by('-pub_date')
+    max_min_price = products.aggregate(Max('price'), Min('price'))
+    min_price = round(max_min_price.get('price__min'))
+    max_price = round(max_min_price.get('price__max'))
+    start_min_price = min_price
+    start_max_price = max_price
+
+    context = {
+        'subcategory': _subcategory,
+        'products': products,
+        'min_price': min_price,
+        'max_price': max_price,
+        'start_min_price': start_min_price,
+        'start_max_price': start_max_price
+    }
+    return render(request, 'subcategory.html', context=context)
 
 
 @login_required
@@ -68,3 +95,17 @@ def shop_list(request):
     }
 
     return render(request, 'shop_list.html', context=context)
+
+
+def payment(request):
+    context = {
+        'title': 'Оплата',
+        'title_h': 'Оплата',
+        'message': 'После заказа товара с вами свяжется наш менеджер.'
+    }
+    return render(request, 'customPage.html', context=context)
+
+
+def delivery(request):
+    context = {}
+    return render()

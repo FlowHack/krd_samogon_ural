@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cache %}
+{% load user_tags %}
+
+{% block title %}Ваши заказы{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'orders.css' %}" media="screen">
+{% endblock style %}
+{% block js %}
+<script defer class="u-script" type="text/javascript" src="{% static 'js/orders.js' %}" defer=""></script>
+{% endblock js %}
+
+{% block content %}
+<main>
+  <section id="main_section" class="section-orders"
+    data-is-in_processing="{% if not in_processing %}0{% else %}1{% endif %}"
+    data-is-in_delivery="{% if not in_delivery %}0{% else %}1{% endif %}"
+    data-is-complete="{% if not complete %}0{% else %}1{% endif %}">
+    <h3 class="title_orders-page">Ваши заказы</h3>
+    <div class="left-section">
+      <ul class="nav_btn-check nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="btn-checker nav-link {% if in_processing %}active{% else %}disabled{% endif %}" id="pills-in_processing-tab" data-bs-toggle="pill" data-bs-target="#pills-in_processing" type="button" role="tab" aria-controls="pills-in_processing" aria-selected="true">В обработке</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="btn-checker nav-link {% if in_delivery and not in_processing %}active{% elif in_delivery and in_processing %}{% else %}disabled{% endif %}" id="pills-in_delivery-tab" data-bs-toggle="pill" data-bs-target="#pills-in_delivery" type="button" role="tab" aria-controls="pills-in_delivery" aria-selected="false">В доставке</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="btn-checker nav-link {% if complete and not in_delivery and not in_processing %}active{% elif complete and in_processing %}{% elif complete and in_delivery %}{% else %}disabled{% endif %}" id="pills-order_complete-tab" data-bs-toggle="pill" data-bs-target="#pills-order_complete" type="button" role="tab" aria-controls="pills-order_complete" aria-selected="false">Полученные</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show {% if in_processing %}active{% else %}disabled{% endif %}" id="pills-in_processing" role="tabpanel" aria-labelledby="pills-in_processing-tab">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            {% for order in in_processing %}
+            {% include 'includes/card_order.html' with order=order title='Заказ от' date=order.date_state_in_processing %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="tab-pane fade {% if in_delivery and not in_processing %}active{% elif in_delivery and in_processing %}{% else %}disabled{% endif %}" id="pills-in_delivery" role="tabpanel" aria-labelledby="pills-in_delivery-tab">
+          {% for order in in_delivery %}
+            {% include 'includes/card_order.html' with order=order title='В доставке с' date=order.date_state_in_delivery %}
+          {% endfor %}
+        </div>
+        <div class="tab-pane fade" id="pills-order_complete" role="tabpanel" aria-labelledby="pills-order_complete-tab">
+          {% for order in complete %}
+            {% include 'includes/card_order.html' with order=order title='Завершён' date=order.date_state_in_delivery %}
+          {% endfor %}
+        </div>
+      </div>
+      {% for order in orders %}
+      {{ order|total_cost_order }}<br><br>
+      {% endfor %}
+    </div>
+    <div class="right-section">
+      <a id="btn_order_call" need_replace="true" on_what_replace_id="spinner_for_call" onclick="to_order_call('btn_order_call')" type="button" class="btn btn-outline-warning btn-call">Заказать звонок</a>
+      <div class="spinner_for_call" id="spinner_for_call">
+        <div class="spinner-grow text-warning" role="status">
+          <span class="visually-hidden">Загрузка...</span>
+        </div>
+      </div>
+      <a href="https://wapp.click/79282053255" target="_blank" type="button" class="btn btn-outline-warning btn-whatsapp">What`s app</a>
+    </div>
+  </section>
+</main>
+{% endblock content %}

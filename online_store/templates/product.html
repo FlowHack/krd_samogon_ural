@@ -18,19 +18,19 @@
   <section class="content_section">
     {% cache 20 carousel_product product.id %}
     <div class="carousel-div">
-      <div id="carouselExampleFade" class="carousel_img-div carousel slide carousel-fade" data-bs-ride="carousel">
+      <div id="carouselExampleDark" class="carousel_img-div carousel slide carousel-dark" data-bs-ride="carousel">
         <div class="carousel-indicators">
           {% for image in images %}
           {% if image.first is True %}
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="active" aria-current="true"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ forloop.counter0 }}" class="active" aria-current="true"></button>
           {% elif is_first is False and forloop.first %}
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="active" aria-current="true"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ forloop.counter0 }}" class="active" aria-current="true"></button>
           {% else %}
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ forloop.counter0 }}"></button>
           {% endif %}
           {% empty %}
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
           {% endfor %}
         </div>
         <div class="carousel-inner">
@@ -57,11 +57,11 @@
           </div>
           {% endfor %}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"  data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Предыдущий</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"  data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Следующий</span>
         </button>
@@ -71,7 +71,7 @@
     <div class="product_characteristic-div">
       {% cache 20 main_info_product product.id %}
       <h2 class="title_product">{{ product.title|safe }}</h2>
-      <p class="price_product">₽ {{ product.price }}₽</p>
+      <p class="price_product">₽ {{ product.price }}</p>
       {% endcache %}
       {% if product|in_shoplist:request.user %}
       <a type="button" onclick="purchases({{ product.id }})" class="cart_product-btn btn btn-outline-danger" id="btn_purchases" data-out>Удалить из корзины</a>

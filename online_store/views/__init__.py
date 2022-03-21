@@ -1,4 +1,4 @@
-from .store import category, index, product, subcategory, shop_list, profile
+from .store import category, index, product, subcategory, shop_list, orders, payment
 from .misc import page_not_found, server_error
 
 __all__ = [
@@ -9,5 +9,6 @@ __all__ = [
     'page_not_found',
     'server_error',
     'shop_list',
-    'profile',
+    'orders',
+    'payment'
 ]

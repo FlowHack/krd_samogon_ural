@@ -1,0 +1,20 @@
+{% load user_tags %}
+
+<div class="accordion_style accordion-item">
+  <p class="accordion-header" id="flush-heading{{ order.id }}">
+    <button style="display: block;" class="btn-collapsed accordion-button collapsed" type="button"data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ order.id }}" aria-expanded="false"  aria-controls="flush-collapse{{ order.id }}">
+      <h5 class="title_accordion-item">{{ title }} {{ date }}</h5>
+      <p class="description-accordion-item">Количество товаров: {{ order|count_items_int_order }}<br>На сумму {{order|total_cost_order }}₽</p>
+    </button>
+  </p>
+  <div id="flush-collapse{{ order.id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ order.id }}" data-bs-parent="#accordionFlushExample">
+    <div class="accordion-body">
+      <div class="list-group">
+        {% for item in order.items.all %}
+        <a href="{% url 'online_store:product' id_product=item.product.id %}"
+           class="characteristic-li list-group-item list-group-item-action">{{ item.product.title }} | {{ item.quantity}}шт. | {{ item.product.price }}₽</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

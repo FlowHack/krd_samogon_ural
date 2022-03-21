@@ -32,9 +32,13 @@ main {
   margin-top: 4em;
   min-height: calc(100vh - 45px - 176px - 15px);
 }
+.spinner_for_call {
+    display: None
+}
+.brand-img-header {border-radius: 50px}
 @media (min-width: 1441px) {
   main {
-    min-height: calc(100vh - 45px - 176px);
+    min-height: calc(100vh - 45px - 176px - 15px);
   }
 }
 @media (max-width: 1440px) and (min-width: 1200px) {
@@ -59,9 +63,11 @@ main {
 }
 @media (max-width: 424px) and (min-width: 322px) {
   main {
+    min-height: calc(100vh - 45px - 96px);
   }
 }
 @media (max-width: 321px) {
   main {
+    min-height: calc(100vh - 45px - 72px - 200px);
   }
 }

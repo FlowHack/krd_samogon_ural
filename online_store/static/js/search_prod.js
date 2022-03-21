@@ -1,6 +1,5 @@
 let timeout = null;
 let blur_timeout = null;
-const index_url = document.location.protocol + "//" + document.location.hostname + ":" + document.location.port + "/";
 const input_search = document.getElementById("search");
 const hint = document.getElementById("hint_search");
 

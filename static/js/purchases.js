@@ -54,5 +54,7 @@ async function purchases(id_product) {
             btn_purchases.removeAttribute('data-out')
             input_count_div.setAttribute('style', 'display: inline-block')
         }
+    } else {
+        alert(result_json.error)
     }
 }

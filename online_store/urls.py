@@ -13,5 +13,6 @@ urlpatterns = [
         name='subcategory'
     ),
     path('shoplist/', views.shop_list, name='shop_list'),
-    path('profile/', views.profile, name='profile')
+    path('orders/', views.orders, name='orders'),
+    path('payment/', views.payment, name='payment')
 ]

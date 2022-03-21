@@ -10,7 +10,7 @@ class Product(models.Model):
     subcategory = models.ForeignKey(
         SubCategory, related_name='in_products',
         on_delete=models.CASCADE,
-        verbose_name='Категория',
+        verbose_name='Подкатегория',
         help_text='Укажите к какой категории относится товар',
         blank=False, null=False
     )
@@ -29,7 +29,7 @@ class Product(models.Model):
     title = models.CharField(
         verbose_name='Название',
         help_text='Укажите название товара',
-        max_length=40, null=False, blank=False, unique=True
+        max_length=70, null=False, blank=False, unique=True
     )
     price = models.FloatField(
         verbose_name='Цена',

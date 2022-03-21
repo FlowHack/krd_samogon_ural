@@ -1,0 +1,155 @@
+.title_orders-page {
+    text-align: center;
+    margin-bottom: 1em;
+}
+.left-section {
+    width: 50%;
+    margin: auto;
+}
+.nav_btn-check {
+    justify-content: center !important;
+}
+.accordion_style {
+    border: solid 1px rgba(0, 0, 0, .4) !important;
+    border-radius: 25px !important;
+    margin-bottom: 1em;
+}
+.btn-collapsed {
+    border-radius: 25px !important;
+}
+.title_accordion-item {
+    font-size: 14pt;
+    margin: 0;
+}
+.description-accordion-item {
+    margin: 0;
+    font-size: 10pt;
+    color: rgba(0, 0, 0, .6)
+}
+.right-section {
+    position: fixed;
+    width: 15%;
+    padding: 20px;
+    border: solid 1px rgba(255, 255, 0, .6);
+    border-radius: 25px;
+    background: rgba(0, 0, 0, .6);
+    text-align: center;
+
+    right: 1em;
+    top: 5em;
+}
+.btn-call {
+    margin-bottom: 0.5em;
+    cursor: pointer;
+}
+
+
+@media (max-width: 1199px) and (min-width: 769px) {
+    .left-section {
+        width: 50%;
+        margin: auto;
+    }
+    .right-section {
+        width: 19%;
+        padding: 20px;
+    }
+    .characteristic-li {font-size: 10pt;}
+    .btn-call {font-size: 12pt;}
+}
+@media (max-width: 768px) and (min-width: 576px) {
+    .left-section {
+        width: 75%;
+        margin: auto;
+    }
+    .btn-checker {font-size: 12pt;}
+    .title_accordion-item {font-size: 13pt;}
+    .characteristic-li {font-size: 11pt;}
+    .right-section {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: static;
+        width: 43%;
+        padding: 15px;
+        margin: auto;
+        margin-top: 1em;
+        right: 0;
+        top: 0;
+    }
+    .btn-call {margin-right: 0.5em}
+}
+@media (max-width: 575px) and (min-width: 424px) {
+    .title_orders-page {font-size: 16pt;}
+    .left-section {
+        width: 90%;
+        margin: auto;
+    }
+    .btn-checker {font-size: 11pt;}
+    .title_accordion-item {font-size: 11pt;}
+    .description-accordion-item {font-size: 9pt;}
+    .characteristic-li {font-size: 10pt;}
+    .right-section {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: static;
+        width: 70%;
+        padding: 10px;
+        margin: auto;
+        margin-top: 1em;
+        right: 0;
+        top: 0;
+    }
+    .btn-call {margin-right: 0.5em; font-size: 11pt}
+    .btn-whatsapp {font-size: 11pt}
+}
+@media (max-width: 424px) and (min-width: 322px) {
+    .title_orders-page {font-size: 15pt;}
+    .left-section {
+        width: 95%;
+        margin: auto;
+    }
+    .btn-checker {font-size: 9pt;}
+    .title_accordion-item {font-size: 10pt;}
+    .description-accordion-item {font-size: 8pt;}
+    .characteristic-li {font-size: 9pt;}
+    .right-section {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: static;
+        width: 80%;
+        padding: 10px;
+        margin: auto;
+        margin-top: 1em;
+        right: 0;
+        top: 0;
+    }
+    .btn-call {margin-right: 0.5em; font-size: 11pt}
+    .btn-whatsapp {font-size: 11pt}
+}
+@media (max-width: 321px) {
+    .title_orders-page {font-size: 15pt;}
+    .left-section {
+        width: 95%;
+        margin: auto;
+    }
+    .btn-checker {font-size: 8pt; padding: 8px}
+    .title_accordion-item {font-size: 9pt;}
+    .description-accordion-item {font-size: 7pt;}
+    .characteristic-li {font-size: 8pt;}
+    .right-section {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: static;
+        width: 80%;
+        padding: 8px;
+        margin: auto;
+        margin-top: 1em;
+        right: 0;
+        top: 0;
+    }
+    .btn-call {margin-right: 0.5em; font-size: 9pt}
+    .btn-whatsapp {font-size: 9pt}
+}

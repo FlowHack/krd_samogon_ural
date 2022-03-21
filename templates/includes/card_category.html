@@ -6,14 +6,19 @@
     <a href="{% if view_category %}{% url 'online_store:category' id_category=category.id %}{% else %}{% url 'online_store:subcategory' id_subcategory=category.id %}{% endif %}">
       <img src="{{ MEDIA_URL }}{{ category.image.url }}" class="card-img card-img-top">
     </a>
+    {% elif product.preview_image.url %}
+    <a href="{% url 'online_store:product' id_product=product.id %}">
+      <img src="{{ MEDIA_URL }}{{ product.preview_image.url }}" class="card-img card-img-top">
+    </a>
     {% else %}
-    <a href="{% if view_category %}{% url 'online_store:category' id_category=category.id %}{% else %}{% url 'online_store:subcategory' id_subcategory=category.id %}{% endif %}">
+    <a href="{% if view_category %}{% url 'online_store:category' id_category=category.id %}{% elif view_product %}{% url 'online_store:product' id_product=product.id %}{% else %}{% url 'online_store:subcategory' id_subcategory=category.id %}{% endif %}">
       <img src="{% static 'images/product.jpeg' %}" class="card-img card-img-top">
     </a>
     {% endif %}
     <div class="card-body" style="padding: 0;">
-      <h5 class="title_card card-title" align="center">{{ category.title }}</h5>
+      <h5 class="title_card card-title" align="center">{{ category.title }}{{ product.title }}</h5>
     </div>
+    {% if not view_product %}
     <div class="list-group">
       {% if view_category %}
       {% for subcategory in category.in_subcategories.all|slice:":4" %}
@@ -41,8 +46,14 @@
       {% endfor %}
       {% endif %}
     </div>
+    {% else %}
+    <ul class="list-group list-group-flush">
+      <li align="center" class="characteristic-li list-group-item">₽ {{ product.price }}</li>
+    </ul>
+    <hr style="margin: 0">
+    {% endif %}
     <div class="card-body">
-      <a href="{% if view_category %}{% url 'online_store:category' id_category=category.id %}{% else %}{% url 'online_store:subcategory' id_subcategory=category.id %}{% endif %}" type="button" class="btn_card btn-center btn btn-outline-dark">Перейти</a>
+      <a href="{% if view_category %}{% url 'online_store:category' id_category=category.id %}{% elif view_product %}{% url 'online_store:product' id_product=product.id %}{% else %}{% url 'online_store:subcategory' id_subcategory=category.id %}{% endif %}" type="button" class="btn_card btn-center btn btn-outline-dark">Перейти</a>
     </div>
   </div>
 </div>

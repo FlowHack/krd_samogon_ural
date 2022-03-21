@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
+from django.utils import timezone
 
 
 class User(AbstractUser):
@@ -11,6 +12,10 @@ class User(AbstractUser):
     first_name = models.CharField(_('first name'), max_length=150, null=False, blank=False)
     last_name = models.CharField(_('last name'), max_length=150, null=True, blank=True)
     phone_number = PhoneNumberField(verbose_name='Номер телефона', unique=True, null=False, blank=False)
+    time_call_to_api = models.DateTimeField(
+        verbose_name='Последняя дата и время обращения к API', auto_now=False, auto_now_add=False,
+        default=timezone.now()
+    )
 
     email_verify = models.BooleanField(default=False)
 

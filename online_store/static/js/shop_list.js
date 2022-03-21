@@ -1,9 +1,7 @@
-const index_url = document.location.protocol + "//" + document.location.hostname + ":" + document.location.port + "/";
 let count = document.getElementById('section-shoplist').getAttribute('count')
-let timeout = null;
 
 if (count == 0){
-    alert('У вас нет товаров в корзине')
+    alert('У вас нет товаров в корзине! Вы будете перенаправлены на главную страницу!')
     document.location.href = index_url
 }
 
@@ -34,6 +32,8 @@ async function shopping_list(id_order_item) {
         while (x < op) {op -= 0.01; obj.style.opacity = op; await sleep(5)}
         obj.remove()
         count -= 1
+    } else {
+        alert(result.error)
     }
     if (count == 0){
         document.location.href = index_url
@@ -73,9 +73,31 @@ async function count_product(id_order_item, value) {
           })
     })
     const result_json = await result.json()
+    console.log(result_json)
 
     if (result_json.result == 'true') {
         price_product.textContent = `Цена: ${result_json.price}руб.`
         total_price.textContent = `Итого: ${result_json.total_price}руб.`
+    } else {
+        alert(result_json.error)
+    }
+}
+
+async function order(url) {
+    result = await fetch(`${index_url}api/make_order/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
+        }
+    })
+    const result_json = await result.json()
+
+    if (result_json.success == 'true') {
+        alert('Удачно! Вы будете перенаправлены на страницу заказов.')
+        document.location.href = url
+    } else {
+        alert('Попробуйте позже.')
+        alert(result_json)
     }
 }

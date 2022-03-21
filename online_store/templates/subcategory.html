@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{ subcategory.title }}{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'nouislider.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'nouislider.min.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'subcategory.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'card-category.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'preview_image_category.css' %}" media="screen">
+{% endblock style %}
+{% block js %}
+<script class="u-script" type="text/javascript" src="{% static 'js/wNumb.js' %}" defer></script>
+<script class="u-script" type="text/javascript" src="{% static 'js/wNumb.min.js' %}" defer></script>
+<script class="u-script" type="text/javascript" src="{% static 'js/nouislider.min.js' %}" defer></script>
+<script class="u-script" type="text/javascript" src="{% static 'js/nouislider.js' %}" defer></script>
+<script class="u-script" type="text/javascript" src="{% static 'js/subcategory.js' %}" defer></script>
+{% endblock js %}
+
+{% block content %}
+<section class="content content-section">
+  <div class="title_img-div">
+    <h2 class="title-h">{{ subcategory.title }}</h2>
+    {% if subcategory.title_image.url %}<img src="{{ MEDIA_URL }}{{ subcategory.title_image.url }}">
+    {% else %}<img src="{% static 'images/banner.jpeg' %}">{% endif %}
+  </div>
+</section>
+<section class="content-filters">
+  <div class="filter_price-div">
+    <h6 class="filter_price-h6">Цена</h6>
+    <div class="range__slider">
+      <div data-start-min-value="{{ start_min_price }}" data-start-max-value="{{ start_max_price }}"
+           data-min-value="{{ min_price }}" data-max-value="{{ max_price }}"
+           id="range"></div>
+    </div>
+  </div>
+  <div class="filter_data_complete-div">
+    <div class="filter_data-div form-check form-switch">
+      <input class="form-check-input" onclick="click_radio_data(this)" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+      <label class="form-check-label" for="flexSwitchCheckChecked">Сначала новинки</label>
+    </div>
+    <a type="button" onclick="apply_filters({{ subcategory.id }})" class="btn-filter-success btn btn-outline-success">Применить фильтры</a>
+  </div>
+</section>
+<section class="content-product">
+  <div id="wrapper_cards" class="content-row row g-4 row-cols-lg-4 row-cols-3">
+    {% for product in products %}
+    {% include 'includes/card_category.html' with view_product=True product=product %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

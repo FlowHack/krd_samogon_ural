@@ -132,3 +132,9 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_DJANGO') or os.getenv('EMAIL_HOST_D
 EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD_EMAIL_DJANGO') or os.getenv('PASSWORD_EMAIL_DJANGO')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}

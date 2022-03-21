@@ -35,7 +35,7 @@
                   <input type="number" min="1" value="{{ record.quantity }}" readonly id="input_count_purchases-{{ record.id }}">
                   <button class="number-plus" type="button" onclick="change_count_product({{ record.id }}, '+')">+</button>
                 </div>
-                <p class="price-small card-text"><small class="text-muted" id="price-order-item-{{ record.id }}">Цена: {{ record.product.price }}руб.</small></p>
+                <p class="price-small card-text"><small class="text-muted" id="price-order-item-{{ record.id }}">Цена: {{ record.product.price }}₽</small></p>
                 <a type="button" style="width: 100%" onclick="shopping_list({{ record.id }})" class="btn btn-outline-danger">Убрать из корзины</a>
               </div>
             </div>
@@ -45,8 +45,8 @@
       </div>
       {% if shopping_list.count > 0 %}
       <div class="right-section">
-        <h2 id="total-price" class="itogo-h2">Итого: {{ sum_price }}руб.</h2>
-        <a type="button" class="btn-center btn btn-outline-success">Заказать</a>
+        <h2 id="total-price" class="itogo-h2">Итого: {{ sum_price }}₽</h2>
+        <a type="button" onclick="order('{% url 'online_store:orders' %}')" class="btn-center btn btn-outline-success">Заказать</a>
       </div>
       {% endif %}
   </section>

@@ -26,3 +26,13 @@ def has_shoplist(user):
 def in_shoplist(product, user):
     order, result = Order.objects.get_or_create(state=Order.StatusOrder.SHOPPINGLIST, user=user)
     return OrderItem.objects.filter(product=product, order=order).exists()
+
+
+@register.filter
+def total_cost_order(order):
+    return order.get_total_cost()
+
+
+@register.filter
+def count_items_int_order(order):
+    return order.get_count_items()

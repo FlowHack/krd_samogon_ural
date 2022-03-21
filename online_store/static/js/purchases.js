@@ -1,5 +1,3 @@
-const index_url = document.location.protocol + "//" + document.location.hostname + ":" + document.location.port + "/";
-
 async function purchases(id_product) {
     let btn_purchases = document.getElementById("btn_purchases");
     let input_count_div = document.getElementById("input_count_purchases_div");
@@ -54,5 +52,7 @@ async function purchases(id_product) {
             btn_purchases.removeAttribute('data-out')
             input_count_div.setAttribute('style', 'display: inline-block')
         }
+    } else {
+        alert(result_json.error)
     }
 }

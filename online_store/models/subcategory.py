@@ -1,7 +1,6 @@
 from django.db import models
 
 from .category import Category
-from .characteristic import Characteristic
 
 
 class SubCategory(models.Model):
@@ -11,12 +10,6 @@ class SubCategory(models.Model):
         verbose_name='К какой категории относится',
         help_text='Укажите к какой категории относится подкатегория',
         blank=False, null=False
-    )
-    characteristics = models.ManyToManyField(
-        Characteristic, related_name='in_subcategories',
-        verbose_name='Характеристики',
-        help_text='Укажите характеристики подкатегории',
-        blank=False
     )
     title = models.CharField(
         max_length=40, unique=True, verbose_name='Заголовок',

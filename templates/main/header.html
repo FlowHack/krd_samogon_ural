@@ -8,7 +8,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="{% url 'online_store:index' %}">
-      <img src="{% static 'images/favicon.jpg' %}" alt="" width="35" style="border-radius: 50px;">
+      <img id="what_replace_when_order_call-header" src="{% static 'images/favicon.jpg' %}" alt="" width="35" class="brand-img-header"">
+      <div class="spinner_for_call" id="spinner_for_call-header">
+        <div class="spinner-grow text-warning" role="status"><span class="visually-hidden">Загрузка...</span></div>
+      </div>
     </a>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -33,11 +36,13 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" href="#">Доставка</a></li>
-            <li><a class="dropdown-item" href="#">Оплата</a></li>
+            <li><a class="dropdown-item" href="{% url 'online_store:payment' %}">Оплата</a></li>
             <li><a class="dropdown-item" href="#">Контакты</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Заказать звонок</a></li>
-            <li><a class="dropdown-item" href="https://wapp.click/79282053255">What`s app</a></li>
+            {% if user.is_authenticated %}
+            <li style="cursor: pointer"><a id="header_to_order_call" on_what_replace_id="spinner_for_call-header" what_replace_id="what_replace_when_order_call-header" need_replace="true" class="dropdown-item" onclick="to_order_call('header_to_order_call')">Заказать звонок</a></li>
+            {% endif %}
+            <li><a class="dropdown-item" target="_blank" href="https://wapp.click/79282053255">What`s app</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -46,7 +51,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             {% if user.is_authenticated %}
-            <li><a class="dropdown-item" href="{% url 'online_store:profile' %}">Кабинет</a></li>
+            <li><a class="dropdown-item" href="{% url 'online_store:orders' %}">Заказы</a></li>
             <li><a class="dropdown-item" href="{% url 'online_store:shop_list' %}">Корзина</a></li>
             <li><hr class="dropdown-divider"></li>
             {% if user.is_authenticated and request.user.is_staff %}
